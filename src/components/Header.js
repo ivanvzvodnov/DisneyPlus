@@ -91,7 +91,7 @@ const Nav = styled.nav`
     justify-content: space-between;
     align-items: center;
     padding: 0 36px;
-    z-index:1;  
+    z-index:2;  
 `
 
 const NavLogo = styled.a`

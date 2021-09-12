@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
-function NavMenuItem({src, value, href = '/'}) {
+function NavMenuItem({src, value, href = '/home'}) {
     return (
         <Container>
-            <a href = {href}>
+            <Link to = {href}>
                 <img src = {src} alt = {value} />
                 <span>{value}</span>
-            </a>
+            </Link>
         </Container>
     )
 }
