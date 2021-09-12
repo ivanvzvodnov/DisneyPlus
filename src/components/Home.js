@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import ImageSlider from './ImageSlider';
+import Viewers from './Viewers';
 
 export default function Home(props) {
     return (
         <Container>
             <ImageSlider/>
+            <Viewers />
         </Container>
     )
 }
