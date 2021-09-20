@@ -1,65 +1,6 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import db from "../firebase";
 
-const Detail = (props) => {
-  const { id } = useParams();
-  const [detailData, setDetailData] = useState({});
-
-  useEffect(() => {
-    db.collection("movies")
-      .doc(id)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setDetailData(doc.data());
-        } else {
-          console.log("no such document in firebase 🔥");
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  }, [id]);
-
-  return (
-    <Container>
-      <Background>
-        <img alt={detailData.title} src={detailData.backgroundImg} />
-      </Background>
-
-      <ImageTitle>
-        <img alt={detailData.title} src={detailData.titleImg} />
-      </ImageTitle>
-      <ContentMeta>
-        <Controls>
-          <Player>
-            <img src="/images/play-icon-black.png" alt="" />
-            <span>Play</span>
-          </Player>
-          <Trailer>
-            <img src="/images/play-icon-white.png" alt="" />
-            <span>Trailer</span>
-          </Trailer>
-          <AddList>
-            <span />
-            <span />
-          </AddList>
-          <GroupWatch>
-            <div>
-              <img src="/images/group-icon.png" alt="" />
-            </div>
-          </GroupWatch>
-        </Controls>
-        <SubTitle>{detailData.subTitle}</SubTitle>
-        <Description>{detailData.description}</Description>
-      </ContentMeta>
-    </Container>
-  );
-};
-
-const Container = styled.div`
+export const Container = styled.div`
   position: relative;
   min-height: calc(100vh-250px);
   overflow-x: hidden;
@@ -68,7 +9,7 @@ const Container = styled.div`
   padding: 0 calc(3.5vw + 5px);
 `;
 
-const Background = styled.div`
+export const Background = styled.div`
   left: 0px;
   opacity: 0.8;
   position: fixed;
@@ -80,14 +21,10 @@ const Background = styled.div`
     object-fit: cover;
     width:100%;
     height: 100vh;
-
-    // @media (max-width: 768px) {
-    //   width: initial;
-    // }
   }
 `;
 
-const ImageTitle = styled.div`
+export const ImageTitle = styled.div`
   align-items: flex-end;
   display: flex;
   -webkit-box-pack: start;
@@ -105,11 +42,11 @@ const ImageTitle = styled.div`
   }
 `;
 
-const ContentMeta = styled.div`
+export const ContentMeta = styled.div`
   max-width: 874px;
 `;
 
-const Controls = styled.div`
+export const Controls = styled.div`
   align-items: center;
   display: flex;
   flex-flow: row nowrap;
@@ -117,7 +54,7 @@ const Controls = styled.div`
   min-height: 56px;
 `;
 
-const Player = styled.button`
+export const Player = styled.button`
   font-size: 15px;
   margin: 0px 22px 0px 0px;
   padding: 0px 24px;
@@ -154,13 +91,13 @@ const Player = styled.button`
   }
 `;
 
-const Trailer = styled(Player)`
+export const Trailer = styled(Player)`
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgb(249, 249, 249);
   color: rgb(249, 249, 249);
 `;
 
-const AddList = styled.div`
+export const AddList = styled.div`
   margin-right: 16px;
   height: 44px;
   width: 44px;
@@ -190,7 +127,7 @@ const AddList = styled.div`
   }
 `;
 
-const GroupWatch = styled.div`
+export const GroupWatch = styled.div`
   height: 44px;
   width: 44px;
   border-radius: 50%;
@@ -212,7 +149,7 @@ const GroupWatch = styled.div`
   }
 `;
 
-const SubTitle = styled.div`
+export const SubTitle = styled.div`
   color: rgb(249, 249, 249);
   font-size: 15px;
   min-height: 20px;
@@ -222,7 +159,7 @@ const SubTitle = styled.div`
   }
 `;
 
-const Description = styled.div`
+export const Description = styled.div`
   line-height: 1.4;
   font-size: 20px;
   padding: 16px 0px;
@@ -232,5 +169,3 @@ const Description = styled.div`
     font-size: 14px;
   }
 `;
-
-export default Detail;

@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
-import Detail from './components/Detail';
+import {Header} from './components/Header/Header';
+import {Home} from './components/Home/Home';
+import {Login} from './components/Login/Login';
+import {Detail} from './components/Detail/Detail';
 
 function App() {
   return (

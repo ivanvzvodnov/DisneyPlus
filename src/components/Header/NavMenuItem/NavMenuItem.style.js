@@ -1,19 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
 
-function NavMenuItem({src, value, href = '/home'}) {
-    return (
-        <Container>
-            <Link to = {href}>
-                <img src = {src} alt = {value} />
-                <span>{value}</span>
-            </Link>
-        </Container>
-    )
-}
-
-const Container = styled.div`
+export const Container = styled.div`
 a {
     display: flex;
     align-items: center;
@@ -34,5 +21,3 @@ a {
       position: relative;
     }
 `
-
-export default NavMenuItem

@@ -1,9 +1,8 @@
-import styled from "styled-components";
-
 import React from 'react'
-import Viewer from "./Viewer";
+import {Viewer} from './Viewer/Viewer'
+import { Container } from './Viewers.style'
 
-export default function Viewers() {
+export const Viewers = () => {
     return (
         <Container>
             <Viewer src = '/images/viewers-disney.png' videoSrc = '/videos/1564674844-disney.mp4'/>
@@ -14,16 +13,3 @@ export default function Viewers() {
         </Container>
     )
 }
-
-const Container = styled.div`
-    margin-top: 30px;
-    padding: 30px 0px 26px;
-    display: grid;
-    grid-gap: 25px;
-    gap: 25px;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-
-    @media(max-width:768px){
-        grid-template-columns: repeat(1, minmax(0, 1fr)) 
-    }
-`

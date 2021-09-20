@@ -1,15 +1,15 @@
-import styled from 'styled-components'
-import ImageSlider from './ImageSlider';
-import Viewers from './Viewers';
+import {ImageSlider} from '../ImageSlider/ImageSlider';
+import {Viewers} from '../Viewers/Viewers';
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import db from '../firebase'
-import { setMovies } from '../features/movie/movieSlicer'
-import { selectUserName } from '../features/user/userSlice'
-import Theme from './Theme';
-import { selectRecommend, selectNewDisney, selectTrending, selectOriginal } from '../features/movie/movieSlicer'
+import db from '../../firebase'
+import { setMovies } from '../../features/movie/movieSlicer'
+import { selectUserName } from '../../features/user/userSlice'
+import {Theme} from '../Theme/Theme';
+import { selectRecommend, selectNewDisney, selectTrending, selectOriginal } from '../../features/movie/movieSlicer'
+import { Container } from './Home.style';
 
-export default function Home(props) {
+export const Home = () => {
     const dispatch = useDispatch()
     const userName = useSelector(selectUserName)
 
@@ -48,8 +48,6 @@ export default function Home(props) {
         })
     }, [userName])
 
-
-
     return (
         <Container>
             <ImageSlider/>
@@ -61,22 +59,3 @@ export default function Home(props) {
         </Container>
     )
 }
-
-const Container = styled.main`
-  position: relative;
-  min-height: calc(100vh - 250px);
-  overflow-x: hidden;
-  display: block;
-  top: 72px;
-  padding: 0 calc(3.5vw + 5px);
-
-  &:after {
-    background: url("/images/home-background.png") center center / cover
-      no-repeat fixed;
-    content: "";
-    position: absolute;
-    inset: 0px;
-    opacity: 1;
-    z-index: -1;
-  }
-`;
